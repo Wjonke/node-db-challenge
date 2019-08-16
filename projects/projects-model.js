@@ -5,8 +5,9 @@ module.exports = {
   updateProject,
   deleteProject,
   addProject,
-  getTasks, 
-  getResourceList
+  getTaskList, 
+  getResourceList,
+  addTask
 }
 
 
@@ -32,6 +33,9 @@ function deleteProject(){
   .del();
 }
 
+
+
+
 function getResourceList(id) {
   return db("projects as p")
   .innerJoin("projects_resources as pr", "p.id", "=", "pr.project_id")
@@ -41,9 +45,14 @@ function getResourceList(id) {
 }
 
 
-function getTasks(id) {
-  return db("projects")
-  .select("projects.tasks")
-  .where({ id })
+function getTaskList(id) {
+  return db("tasks as t")
+  .innerJoin("projects as p", "p.id", "=", "t.project_id")
+  .select("p.name", "p.description", "t")
+  .where({ "p.id" : id })
 }
 
+function addTask(tasks){
+  return db('tasks')
+  .insert(tasks, 'id')
+}

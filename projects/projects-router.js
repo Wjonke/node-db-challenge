@@ -43,10 +43,26 @@ router.get('/:id/resourcelist', (req, res) => {
   })
 })
 
-router.get("/:id/tasks", (req, res) => {
+
+
+/////////Tasks section/////////
+
+//add a new task
+
+router.post('/tasks', (req, res) => {
+  const addTask = req.body
+  Projects.addTask(addTask)
+  .then(task => {res.status(200).json(task)})
+  .catch(err => {res.status(500).json(err)})
+})
+
+
+//retrieve tasks for a project, needs project name, project project Description, tasks associated
+
+router.get('/tasks/:id', (req, res) => {
   const { id } = req.params;
-  Projects.getTasks(id)
-  .then(project => {res.status(200).json(project)})
+  Projects.getTaskList(id)
+  .then(task => {res.status(200).json(task)})
   .catch(err => {res.status(500).json({message: "Big ole error"})})
 })
 
