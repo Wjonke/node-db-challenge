@@ -62,14 +62,14 @@ Take the steps necessary to complete the project from scratch. Start by initiali
 Complete the following tasks:
 
 - [x] Design the data model and use _knex migrations_ to create the database and tables.
-- [ ] Build an API with endpoints for:
+- [x] Build an API with endpoints for:
   - [x] adding "resources".
   - [x] retrieving a list of "resources".
   - [x] adding "projects".
   - [x] retrieving a list of all "projects".
-  - [ ] adding "tasks".
-  - [ ] retrieving a list of "tasks". **The list of tasks should include the project name and project description**.
-- [ ] When returning `project` or `task` information, the `completed` property should be `true` or `false`.
+  - [x] adding "tasks".
+  - [x] retrieving a list of "tasks". **The list of tasks should include the project name and project description**.
+- [x] When returning `project` or `task` information, the `completed` property should be `true` or `false`.
 
 For example, instead of returning a `task` that looks like this:
 
@@ -192,7 +192,7 @@ Project:
 }
 ```
 
-Add the remaining CRUD operations for projects and tasks.
+ x Add the remaining CRUD operations for projects and tasks.
 
 Use `knex` to add _data seeding_ scripts for projects and tasks.
 

@@ -52,7 +52,7 @@ router.get('/:id/resourcelist', (req, res) => {
 router.post('/tasks', (req, res) => {
   const addTask = req.body
   Projects.addTask(addTask)
-  .then(task => {res.status(200).json(task)})
+  .then(project => {res.status(200).json(project)})
   .catch(err => {res.status(500).json(err)})
 })
 
