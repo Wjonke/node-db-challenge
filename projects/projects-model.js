@@ -5,7 +5,7 @@ module.exports = {
   updateProject,
   deleteProject,
   addProject,
-  getInstructions, 
+  getTasks, 
   getResourceList
 }
 
@@ -41,9 +41,9 @@ function getResourceList(id) {
 }
 
 
-function getInstructions(id) {
-  return db("recipes")
-  .select("recipes.steps")
+function getTasks(id) {
+  return db("projects")
+  .select("projects.tasks")
   .where({ id })
 }
 
