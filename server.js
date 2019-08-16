@@ -3,8 +3,8 @@ const express = require('express');
 
 const server = express();
 
-const ProjectRouter = require('./projects/project-router')
-const ResourceRouter = require('./resources/resource-router')
+const ProjectRouter = require('./projects/projects-router')
+const ResourceRouter = require('./resources/resources-router')
 
 
 server.use(express.json());
