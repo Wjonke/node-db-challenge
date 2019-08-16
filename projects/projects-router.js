@@ -43,12 +43,17 @@ router.get('/:id/resourcelist', (req, res) => {
   })
 })
 
+router.get('/tasks', (req, res) => {
+  Projects.getTasks()
+  .then(tasks => {res.status(200).json(tasks)})
+  .catch(err => {res.status(500).json(err)})
+});
 
 
 /////////Tasks section/////////
 
 //add a new task
-
+//tests passed
 router.post('/tasks', (req, res) => {
   const addTask = req.body
   Projects.addTask(addTask)
