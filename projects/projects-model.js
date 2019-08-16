@@ -39,7 +39,7 @@ function deleteProject(){
 function getResourceList(id) {
   return db("projects as p")
   .innerJoin("projects_resources as pr", "p.id", "=", "pr.project_id")
-  .innerJoin("resources as r", "r.id", "=", "pr.resources_id")
+  .innerJoin("resources as r", "r.id", "=", "pr.resource_id")
   .select("p.name", "r.name", "pr.quantity")
   .where({ "p.id" : id })
 }
