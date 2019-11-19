@@ -1,0 +1,22 @@
+{
+  "name": "node-db-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "repository": "https://github.com/Wjonke/node-db-challenge.git",
+  "author": "Wes Jonke <wesjonke@gmail.com>",
+  "license": "MIT",
+  
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.19.1",
+    "knex-cleaner": "^1.3.0",
+    "sqlite3": "^4.0.9"
+  },
+
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}

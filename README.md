@@ -16,19 +16,19 @@ The Minimum Viable Product must be completed in three hours.
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Team Lead_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+- [x] Create a forked copy of this project.
+- [x] Add your _Team Lead_ as collaborator on Github.
+- [x] Clone your forked version of the Repository.
+- [x] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
+- [x] Implement the project on this Branch, committing changes regularly.
+- [x] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
-- [ ] Submit a Pull-Request to merge `firstName-lastName` Branch into master on **your fork, don't make Pull Requests against Lambda's repository**.
-- [ ] Please don't merge your own pull request.
-- [ ] Add your _Team Lead_ as a Reviewer on the Pull-request
-- [ ] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
+- [x] Submit a Pull-Request to merge `firstName-lastName` Branch into master on **your fork, don't make Pull Requests against Lambda's repository**.
+- [x] Please don't merge your own pull request.
+- [x] Add your _Team Lead_ as a Reviewer on the Pull-request
+- [x] Your _Team Lead_ will count the challenge as done by merging the branch into _master_.
 
 ## Commits
 
@@ -39,12 +39,21 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
+SQL is typically a relational database, NoSQL  on the other hand is a non relational database.
+SQL databases define and manipulate data based structured query language 'SQL
+in short, relational databases use SQL to manipulate data
 
 - [ ] Why do tables need a `primary key`?
+A primary key is used to tie other foreign keys to that table, usually set up as the id that auto increments
 
 - [ ] What is the name given to a table column that references the primary key on another table.
+foreign key
 
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+
+the first table may use more than one of the second, the second table may also use more than one of the first table
+
+
 
 ## Minimum Viable Product
 
@@ -52,15 +61,15 @@ Take the steps necessary to complete the project from scratch. Start by initiali
 
 Complete the following tasks:
 
-- [ ] Design the data model and use _knex migrations_ to create the database and tables.
-- [ ] Build an API with endpoints for:
-  - [ ] adding resources.
-  - [ ] retrieving a list of resources.
-  - [ ] adding projects.
-  - [ ] retrieving a list of projects.
-  - [ ] adding tasks.
-  - [ ] retrieving a list of tasks. **The list of tasks should include the project name and project description**.
-- [ ] When returning `project` or `task` information, the `completed` property should be `true` or `false`.
+- [x] Design the data model and use _knex migrations_ to create the database and tables.
+- [x] Build an API with endpoints for:
+  - [x] adding "resources".
+  - [x] retrieving a list of "resources".
+  - [x] adding "projects".
+  - [x] retrieving a list of all "projects".
+  - [x] adding "tasks".
+  - [x] retrieving a list of "tasks". **The list of tasks should include the project name and project description**.
+- [x] When returning `project` or `task` information, the `completed` property should be `true` or `false`.
 
 For example, instead of returning a `task` that looks like this:
 
@@ -84,39 +93,57 @@ The API should return:
 
 ### Business Rules
 
-- a `project` can have multiple `tasks`.
-- a `task` belongs to only one `project`.
+- a `project` can have multiple `tasks`.    one to many
+- a `task` belongs to only one `project`.   one to one
+
+
 - a `project` can use multiple `resources`.
-- the same `resource` can be used in multiple `projects`.
-- when adding `projects` the client must provide a name, the description is optional.
-- when adding `resources` the client must provide a name, the description is optional.
-- when adding a `task` the client must provide a description, the notes are optional.
-- when adding a `task` the client must provide the `id` of an existing project.
+- the same `resource` can be used in multiple `projects`.   many to many?
+
+
+- when adding `projects` the client must provide a name, the description is optional.    id name description
+
+- when adding `resources` the client must provide a name, the description is optional.   id name description
+
+- when adding a `task` the client must provide a description, the notes are optional.    
+- when adding a `task` the client must provide the `id` of an existing project.          id description notes project_id
+
 - for `projects` and `tasks` if no value is provided for the `completed` property, the API should provide a default value of `false`.
+
+
+
 
 ### Entities
 
 A `project` is what needs to be done. We want to store the following data about a `project`:
 
-- [ ] a unique Id.
-- [ ] a name. This column is required.
-- [ ] a description.
-- [ ] a boolean that indicates if the project has been completed. This column cannot be NULL, the default value should be `false`.
+- [x] a unique Id.
+- [x] a name. This column is required.
+- [x] a description.
+- [x] a boolean that indicates if the project has been completed. This column cannot be NULL, the default value should be `false`.
 
 A `resource` is anything needed to complete a project, some examples are: a person, a tool, a meeting room or a software license. We want to store the following data about a `resource`:
 
-- [ ] a unique Id.
-- [ ] a name. This column is required.
-- [ ] a description.
+- [x] a unique Id.
+- [x] a name. This column is required.
+- [x] a description.
 
 The database should not allow resources with duplicate names.
 
 An `task` one of the steps needed to complete the project. We want to store the following data about an `task`.
 
-- [ ] a unique id.
-- [ ] a description of what needs to be done. This column is required.
-- [ ] a notes column to add additional information.
-- [ ] a boolean that indicates if the task has been completed. This column cannot be NULL, the default value should be `false`.
+- [x] a unique id.
+- [x] a description of what needs to be done. This column is required.
+- [x] a notes column to add additional information.
+- [x] a boolean that indicates if the task has been completed. This column cannot be NULL, the default value should be `false`.
+
+
+
+
+
+
+
+
 
 ## Stretch Problem
 
@@ -125,11 +152,15 @@ This section is **optional** and not counted towards MVP. Start working on it af
 Add an endpoint for retrieving a `project` by its `id` that returns an object with the following structure:
 
 ```js
+
+Project:
 {
   id: 1,
   name: 'project name here',
   description: 'the project description',
   completed: false, // or true, the database will return 1 for true and 0 for false
+  
+  
   tasks: [
     {
       id: 1,
@@ -144,6 +175,8 @@ Add an endpoint for retrieving a `project` by its `id` that returns an object wi
       completed: false // or true
     }
   ],
+
+
   resources: [
     {
       id: 1,
@@ -159,7 +192,7 @@ Add an endpoint for retrieving a `project` by its `id` that returns an object wi
 }
 ```
 
-Add the remaining CRUD operations for projects and tasks.
+ x Add the remaining CRUD operations for projects and tasks.
 
 Use `knex` to add _data seeding_ scripts for projects and tasks.
 
